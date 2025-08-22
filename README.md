@@ -3,6 +3,7 @@
 Execute the following commands in order within this folder
 
 '''
+
 sudo apt-get update
 sudo apt-get install -y wget unzip libvulkan1
 
@@ -11,4 +12,5 @@ sudo apt-get install -f -y
 
 source env/bin/activate
 pip install -r requirements.txt
+
 '''
