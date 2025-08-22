@@ -2,11 +2,17 @@
 
 Execute the following commands in order within this folder
 
->sudo apt-get update\n
->sudo apt-get install -y wget unzip libvulkan1\n
+'''
+sudo apt-get update
+sudo apt-get install -y wget unzip libvulkan1
+'''
 
->sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb\n
->sudo apt-get install -f -y\n
+'''
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install -f -y
+'''
 
->source env/bin/activate\n
->pip install -r requirements.txt\n
+'''
+source env/bin/activate
+pip install -r requirements.txt
+'''
