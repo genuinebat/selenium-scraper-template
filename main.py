@@ -49,7 +49,7 @@ for url in webpages:
 	webpages_data.append(data)
 
 with open("data.csv", "w", newline="") as csvf:
-	writer = csv.writer(csvf, delimiter=" ", quotechar="|", quoting=csv.QUOTE_MINIMAL)
+	writer = csv.writer(csvf)
 
 	writer.writerow(webpages_headers)
 
