@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 
 SRC_URL = "https://www.selenium.dev/documentation/"
@@ -35,17 +36,22 @@ webpages_data = []
 
 for url in webpages:
 	browser.get(url)
-	wait = WebDriverWait(browser, 10)
+	wait = WebDriverWait(browser, 5)
 
 	data = []
 
 	# code to extract the required information on each page
-	text_element = wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[1]/div/main/div/div[1]")))
-	data.append(text_element.text)
+	try:
+		text_element = wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[1]/div/main/div/div[1]")))
+		data.append(text_element.text)
 
-	#img_element = wait.until(EC.visibility_of_element_located((By.XPATH, "full XPATH of HTML element")))
-	#data["img"] = img_element.get_attribute("src")
+		#img_element = wait.until(EC.visibility_of_element_located((By.XPATH, "full XPATH of HTML element")))
+		#data["img"] = img_element.get_attribute("src")
 
+	except TimeoutException:
+		print("ELEMENT NOT FOUND")
+
+	print(data)
 	webpages_data.append(data)
 
 with open("data.csv", "w", newline="") as csvf:
@@ -55,6 +61,8 @@ with open("data.csv", "w", newline="") as csvf:
 
 	for data in webpages_data:
 		writer.writerow(data)
+
+	print("DATA SUCCESSFULLY STORED IN data.csv")
 
 time.sleep(2)
 browser.quit()
