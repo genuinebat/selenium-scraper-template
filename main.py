@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 SRC_URL = "https://www.selenium.dev/documentation/"
+WEBPAGE_HEADERS = ["content"]
 
 def prep_webpages(base_url):
 	webpages = []
@@ -30,7 +31,6 @@ opt.add_argument("--disable-dev-shm-usage")
 browser = webdriver.Chrome(service=serv, options=opt)
 
 webpages = prep_webpages(SRC_URL)
-webpages_headers = ["content"]
 webpages_data = []
 
 for url in webpages:
@@ -51,7 +51,7 @@ for url in webpages:
 with open("data.csv", "w", newline="") as csvf:
 	writer = csv.writer(csvf)
 
-	writer.writerow(webpages_headers)
+	writer.writerow(WEBPAGE_HEADERS)
 
 	for data in webpages_data:
 		writer.writerow(data)
