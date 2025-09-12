@@ -1,6 +1,6 @@
-# Install Dependencies
+# Preparing Dependencies
 
-## Execute the following commands in the terminal in specified order to download and install all the necessary script dependencies
+### Execute the following commands to download and install all the necessary script dependencies
 
 Updates all apps and installs Vulkan library
 ```
