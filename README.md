@@ -1,4 +1,5 @@
 # Preparing Dependencies
+## Do note this only works in Linux
 
 ### Execute the following commands to download and install all the necessary script dependencies
 
